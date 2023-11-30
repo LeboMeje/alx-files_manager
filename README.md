@@ -34,4 +34,4 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - how to setup and use a background worker
 
 ## Authors
-- Hambisa Adamu - [Github]([(https://github.com/GEDIH)] | [LinkedIn]([(https://www.linkedin.com/in/hambisa-adamu-273346241/)])
+- Hambisa Adamu - [Github]([(https://github.com/GEDIH)] | [LinkedIn]([(https://www.linkedin.com/in/hambisa-adamu-273346241/)]
