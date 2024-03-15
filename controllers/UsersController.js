@@ -1,52 +1,77 @@
+import crypto from 'crypto';
 import { ObjectId } from 'mongodb';
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
-const sha1 = require('sha1');
+export function postNew(req, res) {
+  const { email, password } = req.body;
 
-class UsersController {
-  static async postNew(req, res) {
-    const { email, password } = req.body;
-    if (!email) {
-      return res.status(400).json({
-        error: 'Missing email',
-      });
-    }
-    if (!password) {
-      return res.status(400).json({
-        error: 'Missing password',
-      });
-    }
-    const existEmail = await dbClient.db.collection('users').findOne({ email });
-    if (existEmail) {
-      return res.status(400).json({
-        error: 'Already exist',
-      });
-    }
-    const hashedPassword = sha1(password);
-    const result = await dbClient.db.collection('users').insertOne({ email, password: hashedPassword });
-    return res.status(201).json({ id: result.insertedId.toString(), email });
+  if (email === undefined) {
+    res.status(400).json({ error: 'Missing email' });
+    return;
   }
 
-  static async getMe(req, res) {
-    const myToken = req.header('X-Token');
-    const userId = await redisClient.get(`auth_${myToken}`);
-
-    if (!userId) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-
-    const _id = ObjectId(userId);
-    const user = await dbClient.db.collection('users').findOne({ _id });
-    if (!user) {
-      return res.status(400).json({ error: 'User not found' });
-    }
-    const data = {
-      email: user.email,
-      id: user._id,
-    };
-    return res.status(200).send(data);
+  if (password === undefined) {
+    res.status(400).json({ error: 'Missing password' });
+    return;
   }
+
+  const collection = dbClient.client.db(dbClient.database).collection('users');
+
+  /**
+   * const user = collection('users').find({ email: email }).toArray();
+   * if (user.length !== 0) {
+   * res.status(400).send('Already exist');
+   * } else {
+   */
+
+  collection.findOne({ email }, (error, user) => {
+    if (error) {
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+
+    if (user) {
+      res.status(400).json({ error: 'Already exist' });
+    } else {
+      const sha1Hash = crypto.createHash('sha1');
+
+      sha1Hash.update(password);
+
+      const hashedPassword = sha1Hash.digest('hex');
+
+      collection.insertOne({ email, password: hashedPassword },
+        (error, result) => {
+          if (error) {
+            res.status(400).json({ error: 'Error inserting document' });
+          } else {
+            res.status(201).json({ id: result.insertedId, email });
+          }
+        });
+    }
+  });
 }
 
-export default UsersController;
+export function getMe(req, res) {
+  const token = req.headers['x-token'];
+
+  redisClient.get(`auth_${token}`)
+    .then((userId) => {
+      const collection = dbClient.client.db(dbClient.database).collection('users');
+      if (userId === null) {
+        res.status(401).json({ error: 'Unauthorized' });
+      } else {
+        collection.findOne({ _id: ObjectId(userId) })
+          .then((user) => {
+            if (user === null) {
+              res.status(401).json({ error: 'Unauthorized' });
+            } else {
+              res.json({ id: user._id, email: user.email });
+            }
+          })
+          .catch(() => {
+            res.status(401).json({ error: 'Unauthorized' });
+          });
+      }
+    });
+}

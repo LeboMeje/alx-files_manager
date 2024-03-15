@@ -1,17 +1,22 @@
 import redisClient from '../utils/redis';
 import dbClient from '../utils/db';
 
-class AppController {
-  static async getStatus(req, res) {
-    const redisAlive = await redisClient.isAlive();
-    const dbAlive = await dbClient.isAlive();
-    return res.status(200).send({ redis: redisAlive, db: dbAlive });
-  }
-
-  static async getStats(req, res) {
-    const usersNumber = await dbClient.nbUsers();
-    const filesNumber = await dbClient.nbFiles();
-    return res.status(200).send({ users: usersNumber, files: filesNumber });
-  }
+export function getStatus(req, res) {
+  res.status(200).json({ redis: redisClient.isAlive(), db: dbClient.isAlive() });
 }
-module.exports = AppController;
+
+export function getStats(req, res) {
+  dbClient.nbUsers()
+    .then((usersResult) => {
+      dbClient.nbFiles()
+        .then((filesResult) => {
+          res.status(200).json({ users: usersResult, files: filesResult });
+        })
+        .catch(() => {
+          res.status(500).json({ error: 'Error getting files count' });
+        });
+    })
+    .catch(() => {
+      res.status(500).json({ error: 'Error getting users count' });
+    });
+}
